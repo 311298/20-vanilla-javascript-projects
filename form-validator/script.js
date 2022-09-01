@@ -29,26 +29,25 @@ function isValidEmail(email){
     return re.test(String(email).toLowerCase())
 }
 
+// check required fields
+function checkRequired(inputArr){
+    inputArr.forEach(function(input){
+        if(input.value.trim() === ''){
+            showError(input,`${getFieldName(input)} is required`)
+        }else{
+            showSuccess(input)
+        }
+    })
+}
+
+//get field name
+function getFieldName(input){
+    return input.id.charAt(0).toUpperCase() + input.id.slice(1);
+}
+
 //event listener
 form.addEventListener('submit',function(e){
     e.preventDefault() // it does not automatically refresh each time
-    console.log(username.value)
 
-    if(username.value === ''){
-        showError(username,'username is required')
-    }else{
-        showSuccess(username)
-    }
-
-    // here we are doing 2 checks on email 1st if it empty or filled and another one is whether it is valid or not?
-    if(email.value === ''){
-        showError(email,'email is required')
-    }else if(!isValidEmail(email.value)){
-        showError(email,'email is not valid')
-    }
-    else{
-        showSuccess(email)
-    }
-
-    // same for password and password 2 which is confirm password
+    checkRequired([username,email,password,password2]);
 })
