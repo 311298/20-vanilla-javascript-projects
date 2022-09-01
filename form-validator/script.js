@@ -85,3 +85,5 @@ form.addEventListener('submit',function(e){
     checkEmail(email)
     checkPasswordMatch(password,password2)
 })
+
+//end
