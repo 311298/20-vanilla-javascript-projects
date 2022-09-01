@@ -29,7 +29,8 @@ function checkEmail(input){
     if(re.test(input.value.trim())){
         showSuccess(input)
     }else{
-        showError(input,'Email is not valid')
+        showError(input,
+            'Email is not valid')
     }
 }
 
@@ -37,8 +38,7 @@ function checkEmail(input){
 function checkRequired(inputArr){
     inputArr.forEach(function(input){
         if(input.value.trim() === ''){
-            showError(
-                input,
+            showError(input,
                 `${getFieldName(input)} is required`)
         }else{
             showSuccess(input)
@@ -49,10 +49,12 @@ function checkRequired(inputArr){
 // check input length
 function checkLength(input,min,max){
     if(input.value.length < min){
-        showError(input,`${getFieldName(input)} must be atleast ${min} characters`)
+        showError(input,
+            `${getFieldName(input)} must be atleast ${min} characters`)
 
     }else if(input.value.length > max){
-        showError(input,`${getFieldName(input)} must be less than ${max} characters`)
+        showError(input,
+            `${getFieldName(input)} must be less than ${max} characters`)
     }else{
         showSuccess(input)
     }
@@ -66,11 +68,14 @@ function getFieldName(input){
 // check password match
 function checkPasswordMatch(input1, input2){
     if(input1.value !== input2.value){
-        showError(input2,'Passwords do not match')
+        showError(input2,
+            'Passwords do not match')
     }
 }
 
 //event listener
+// here we did not added any function to button 
+// all the properties like username , email and password automatically sent 
 form.addEventListener('submit',function(e){
     e.preventDefault() // it does not automatically refresh each time
 
