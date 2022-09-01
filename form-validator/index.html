@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Form Validator</title>
+</head>
+<body>
+    <div class="container">
+        <!-- no action in form as we are not submitting inside the file -->
+        <form id="form" class="form">
+            <h2>Registered With Us</h2>
+            <div class="form-control">
+                <label for="username">username</label>
+                <input type="text" id="username" placeholder="type your username">
+                <small>Error Message</small>
+            </div>
+            <div class="form-control">
+                <label for="email">email</label>
+                <input type="text" id="email" placeholder="type your email">
+                <small>Error Message</small>
+            </div>
+            <div class="form-control">
+                <label for="password">password</label>
+                <input type="password" id="password" placeholder="type your password">
+                <small>Error Message</small>
+            </div>
+            <div class="form-control">
+                <label for="password2">confirm password</label>
+                <input type="password" id="password2" placeholder="type your password again">
+                <small>Error Message</small>
+            </div>
+            <button>submit</button>
+        </form> 
+    </div>
+</body>
+</html>
