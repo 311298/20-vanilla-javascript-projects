@@ -4,6 +4,8 @@ const count = document.getElementById('count');
 const total = document.getElementById('total');
 const movieSelect = document.getElementById('movie');
 
+populateUI()
+
 let ticketPrice = +movieSelect.value;
 
 // to update the count which is shown below
@@ -26,6 +28,27 @@ function updateSelectCount(){
     count.innerText= selectedSeats.length // for changing the number represented for selected seats
     total.innerText = ticketPrice * selectedSeats.length
 }
+
+// get data from local storage and populate UI
+function populateUI(){
+    const selectedSeats = JSON.parse(localStorage.getItem('selectedSeats')) // key will same as time of setItem()
+    // console.log(selectedSeats) // here we can the array we get after referesh there values
+    if(selectedSeats !== null && selectedSeats.length >0){
+        seats.forEach((seat,index)=>{
+            if(selectedSeats.indexOf(index)>-1){
+                // this will check if it is preesent in array or not
+                seat.classList.add('selected') // by this after reload the seat will remain selected 
+            }
+        })
+    }
+
+    const selectedMovieIndex = localStorage.getItem('selectMovieIndex')
+
+    if(selectedMovieIndex !==null){
+        movieSelect.selectedIndex = selectedMovieIndex // here we are setting the value to selectedIndex of movie select 
+    }
+}
+
 
 // movie changed event
 movieSelect.addEventListener('change',(e)=>{
@@ -58,3 +81,6 @@ container.addEventListener('click',(e)=>{
         updateSelectCount();
     }
 })
+
+// intial count and selected count
+updateSelectCount()
